@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+}
+.conteudo{
+      margin:auto;
+      width: 300px;
+      margin-top:50px;
+}
+.logintitulo{
+  text-align:center;
+}
+.container{
+    margin-top: 50px;
+}
