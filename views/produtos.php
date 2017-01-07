@@ -13,7 +13,7 @@
     </thead>
     <?php foreach($produtos as $produto): ?>
         <tr>
-            <td><img src="http://lojavirtual:81/assets/images/<?php echo $produto['imagem']; ?>" border="0" height="60" /></td>
+            <td><img src="/assets/images/<?php echo $produto['imagem']; ?>" border="0" height="60" /></td>
             <td><?php echo $produto['nome']; ?></td> 
             <td><?php echo utf8_encode($produto['categoria']); ?></td>
             <td>R$ <?php echo $produto['preco']; ?></td>
@@ -25,10 +25,15 @@
         </tr>
     <?php endforeach; ?>
 </table>
-
+    <?php if (isset($_GET['p']) && !empty($_GET['p']) && $_GET['p'] > 1): ?> 
+        <a href="/produtos?p=<?php echo ($_GET['p'] - 1); ?>" class="btn btn-default">Anterior</a>
+    <?php endif; ?>    
 <?php
     $page = ceil($quantidade / $limit);
     for($i = 1; $i <= $page; $i++): ?>
-        <a href="/produtos?p=<?php echo $i; ?>" class="btn btn-default"><?php echo $i; ?>
+        <a href="/produtos?p=<?php echo $i; ?>" class="btn btn-default"><?php echo $i; ?></a>
 <?php endfor;?>
+<?php if (isset($_GET['p']) && !empty($_GET['p']) && $_GET['p'] < $page): ?> 
+        <a href="/produtos?p=<?php echo ($_GET['p'] + 1); ?>" class="btn btn-default">Próxima</a>
+    <?php endif; ?> 
 
