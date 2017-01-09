@@ -5,8 +5,14 @@ class categoriasController extends controller{
     }
     public function index(){
         $dados = array();
-        $categorias = new categorias();
-        $dados['categorias'] = $categorias->getCategorias();       
+        $init = 0;
+        $dados['limit'] = 10;
+        if (isset($_GET['p']) && !empty($_GET['p'])) {
+            $init = ($dados['limit'] * $_GET['p']) - $dados['limit'];
+        }
+        $categorias = new categorias();     
+        $dados['quantidade'] = $categorias->getQuantidade();     
+        $dados['categorias'] = $categorias->getCategorias($init, $dados['limit']);       
         $this->loadTemplate("categorias", $dados);
     }
     public function add(){

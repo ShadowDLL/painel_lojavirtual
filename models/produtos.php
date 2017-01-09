@@ -41,7 +41,6 @@ class produtos extends model{
     }
     public function editImage($id, $imagem){
         $sql = "UPDATE produtos SET imagem = '$imagem' WHERE id = '$id'";
-        echo $id;exit;
         $this->db->query($sql);
     }
     public function del($id){

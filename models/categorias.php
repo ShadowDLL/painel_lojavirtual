@@ -3,9 +3,9 @@ class categorias extends model{
     public function __construct() {
         parent::__construct();
     }
-    public function getCategorias(){
+    public function getCategorias($init, $limit){
         $array = array();
-        $sql = "SELECT * FROM categorias";
+        $sql = "SELECT * FROM categorias LIMIT $init, $limit";
         $sql = $this->db->query($sql);
         if ($sql->rowCount() > 0) {
             $array = $sql->fetchAll();
@@ -20,6 +20,16 @@ class categorias extends model{
             $array = $sql->fetch();
         }
         return $array;
+    }
+    public function getQuantidade(){
+        $q = 0;
+        $sql = "SELECT COUNT(id)AS qtd FROM categorias";
+        $sql = $this->db->query($sql);
+        if ($sql->rowCount() > 0) {
+            $sql = $sql->fetch();
+            $q = $sql['qtd'];
+        }
+        return $q;
     }
     public function add($categoria){
         $sql = "INSERT INTO categorias SET titulo = '$categoria'";
