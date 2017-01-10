@@ -42,7 +42,7 @@ class vendas extends model{
         }
         return $q;
     }
-    public function getVendas($init, $limit){
+    public function getVendas($init = 0, $limit = 10){
         $array = array();
         $sql = "SELECT vendas.id, usuarios.nome, vendas.valor, pagamentos.nome AS pg_nome, vendas.status_pg FROM vendas LEFT JOIN usuarios ON usuarios.id = vendas.id_usuario LEFT JOIN pagamentos ON pagamentos.id = vendas.forma_pg LIMIT $init, $limit";
         $sql = $this->db->query($sql);

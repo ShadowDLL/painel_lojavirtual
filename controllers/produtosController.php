@@ -44,13 +44,11 @@ class produtosController extends controller{
         $this->loadTemplate("produtos_add", $dados);
     }
     
-        public function edit($id){
-            
+        public function edit($id){           
         $dados = array(
             "categorias" => array(),
             "produto" => array()
         );
-        
         $categorias = new categorias();
         $produtos = new produtos();
         $dados['produto'] = $produtos->getProduto($id);

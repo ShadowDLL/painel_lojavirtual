@@ -3,7 +3,7 @@ class usuarios extends model{
     public function __construct() {
         parent::__construct();
     }
-    public function getUsuarios($init, $limit){
+    public function getUsuarios($init = 0, $limit = 10){
         $array = array();
         $sql = "SELECT * FROM admins LIMIT $init, $limit";
         $sql = $this->db->query($sql);

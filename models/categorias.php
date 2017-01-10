@@ -3,7 +3,7 @@ class categorias extends model{
     public function __construct() {
         parent::__construct();
     }
-    public function getCategorias($init, $limit){
+    public function getCategorias($init = 0, $limit = 10){
         $array = array();
         $sql = "SELECT * FROM categorias LIMIT $init, $limit";
         $sql = $this->db->query($sql);

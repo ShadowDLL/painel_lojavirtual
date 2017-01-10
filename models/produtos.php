@@ -12,7 +12,7 @@ class produtos extends model{
         }
         return $array;
     }
-    public function getProdutos($init, $limit){
+    public function getProdutos($init = 0, $limit = 10){
         $array = array();
         $sql = "SELECT *,(SELECT categorias.titulo FROM categorias WHERE categorias.id = produtos.id_categoria) AS categoria FROM produtos LIMIT $init, $limit";
         $sql = $this->db->query($sql);
